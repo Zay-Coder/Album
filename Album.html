@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Foto Saya</title>
+    <style>
+        /* Gaya Dasar */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        p {
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        /* Desain Grid Galeri */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Modal / Layar Penuh saat foto diklik */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            padding-top: 50px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.9); 
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #bbb;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kenangan Indah</h1>
+        <p>Kumpulan foto-foto terbaik saya.</p>
+    </header>
+
+    <div class="gallery-container">
+        <img class="gallery-item" src="https://picsum.photos/id/1015/600/400" alt="Pemandangan Alam" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1016/600/400" alt="Pegunungan" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1018/600/400" alt="Danau" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1019/600/400" alt="Pantai" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1020/600/400" alt="Hewan" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1021/600/400" alt="Hutan" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1022/600/400" alt="Bintang" onclick="bukaModal(this)">
+        <img class="gallery-item" src="https://picsum.photos/id/1023/600/400" alt="Jalan" onclick="bukaModal(this)">
+    </div>
+
+    <div id="jendelaModal" class="modal" onclick="tutupModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="fotoZoom">
+    </div>
+
+    <footer>
+        &copy; 2026 Album Foto Saya.
+    </footer>
+
+    <script>
+        var modal = document.getElementById("jendelaModal");
+        var fotoZoom = document.getElementById("fotoZoom");
+
+        function bukaModal(elemenFoto) {
+            modal.style.display = "block";
+            fotoZoom.src = elemenFoto.src;
+        }
+
+        function tutupModal() {
+            modal.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
